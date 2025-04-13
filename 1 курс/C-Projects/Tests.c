@@ -3,7 +3,13 @@
 #include <stdio.h>
 #include <Windows.h>
 
+typedef struct {
+    int beg;
+    int end;
+} otrezok;
+
 int main(void)
 {
-    SetConsoleOutputCP(CP_UTF8);
-}
+    oztrezok a = {1, 10};
+    oz
+};
