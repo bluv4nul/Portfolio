@@ -10,6 +10,5 @@ typedef struct {
 
 int main(void)
 {
-    oztrezok a = {1, 10};
-    oz
+    otrezok a = {1, 10};
 };
