@@ -76,5 +76,5 @@ int main(void)
         }
     }
     free(array);
-    
+
 }
