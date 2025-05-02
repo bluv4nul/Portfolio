@@ -63,27 +63,27 @@ int main(void){
     List *head = NULL;
     List *tail = NULL;
 
-    add_end(&head, &tail, 10);
-    add_end(&head, &tail, 20);
-    add_end(&head, &tail, 30);
+    add_end(&head, &tail, 1);
+    add_end(&head, &tail, 2);
+    add_end(&head, &tail, 3);
 
     print_forward(head);
     printf("\n");
     print_backward(tail);
     printf("\n");
 
-    add_beginning(&head, &tail, 1);
-    add_beginning(&head, &tail, 2);
-    add_beginning(&head, &tail, 3);
+    add_beginning(&head, &tail, 0);
+    add_beginning(&head, &tail, -1);
+    add_beginning(&head, &tail, -2);
 
     print_forward(head);
     printf("\n");
     print_backward(tail);
     printf("\n");
 
-    add_end(&head, &tail, 52);
-    add_end(&head, &tail, 53);
-    add_end(&head, &tail, 54);
+    add_end(&head, &tail, 4);
+    add_end(&head, &tail, 5);
+    add_end(&head, &tail, 6);
 
     print_forward(head);
     printf("\n");

@@ -8,13 +8,11 @@ int add(int a,int b){
 }
 
 struct str{
-
-    int (*add_ptr)(int, int);
-
+    int (*ptr)(int, int);
 };
 
 int main(void)
 {
     struct str str = {add};
-    printf("%d", str.add_ptr(8,8));
+    printf("%d", str.ptr(8,8));
 }
