@@ -3,12 +3,11 @@
 #include <stdio.h>
 #include <Windows.h>
 
-typedef struct {
-    int beg;
-    int end;
-} otrezok;
+#define min(a,b) (a < b) ? a : b
 
 int main(void)
 {
-    otrezok a = {1, 10};
+    SetConsoleOutputCP(CP_UTF8);
+    int a = 10;
+    int 
 };
