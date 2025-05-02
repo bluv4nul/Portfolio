@@ -43,7 +43,7 @@ int main(void)
             break;
         case 2:
             (array+i)->n_type = var_double;
-            printf("Введите число с плавающей запятой: ");
+            printf("Введите число с плавающей запятой (в качестве разделителя точка): ");
             scanf("%lf", &(array+i)->n.double_n);
             break;
         case 3:
@@ -65,13 +65,13 @@ int main(void)
         switch ((array+i)->n_type)
         {
         case var_int:
-            printf("Элемент %d: %d\n",i+1,(array+i)->n.int_n);
+            printf("Элемент %d: %d, тип - Int\n",i+1,(array+i)->n.int_n);
             break;
         case var_double:
-            printf("Элемент %d: %lf\n",i+1,(array+i)->n.double_n);
+            printf("Элемент %d: %lf, тип - Double\n",i+1,(array+i)->n.double_n);
             break;
         case var_char:
-            printf("Элемент %d: %s\n",i+1,(array+i)->n.char_n);
+            printf("Элемент %d: %s, тип - Char\n",i+1,(array+i)->n.char_n);
             break;
         }
     }
