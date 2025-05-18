@@ -3,11 +3,17 @@
 #include <stdio.h>
 #include <Windows.h>
 
-#define min(a,b) (a < b) ? a : b
+
+
+int power(int a, int n){
+    if(n == 0) {
+        return 1;
+    }
+    return power(a,n-1)*a;
+}
 
 int main(void)
 {
     SetConsoleOutputCP(CP_UTF8);
-    int a = 10;
-    int 
+    printf("%d", power(5,5));
 };
