@@ -38,4 +38,5 @@ int main(void)
     print_array(arr, n);
     swap(arr, n);
     print_array(arr, n);
+    free(arr);
 };

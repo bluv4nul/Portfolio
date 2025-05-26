@@ -31,6 +31,7 @@ int main(void){
         printf("Symbol: %c, length = %d\n", my_string_ptr[i], length);
     }
     printf("String final lengtns: %d\n", length);
+    free(my_string_ptr);
 
     //3. Получаем длинну строки через функции
     length = strlen(my_string);
@@ -38,7 +39,7 @@ int main(void){
 
     //4. Создаем новую строку и копируем ее в старую
     char my_string1[] = "Tomato";
-    strcpy(my_string,my_string1);
+    strncpy(my_string,my_string1,strlen(my_string)-1);
     printf("\nCopied string: %s\n", my_string);
 
     //5. Создаем еще 2 строки и делаем конкатенацию

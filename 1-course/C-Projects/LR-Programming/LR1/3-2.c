@@ -6,27 +6,29 @@ int main(void)
 {
     SetConsoleOutputCP(CP_UTF8);
 
-    int length;
-
-    printf("Введите длинну массива: ");
-    scanf("%d", &length);
-
-    int arr[length] = {};
-    int t = 0;
-
-    for(int i = length-1; i > -1; i--)
-    {
-        printf("Введите %d элемент массива: ", t);
-        scanf("%d", &arr[i]);
-        t++;
-    }
-
-    printf("Получившийся массив: [ ");
-    for(int i = 0; i < length; i ++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("]");
-
+    int n;
     
+    printf("Введите количество элементов массива: ");
+    scanf("%d", &n);
+    
+    int X[n];
+    
+    printf("Введите %d элементов массива:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &X[i]);
+    }
+    
+    for (int i = 0; i < n / 2; i++) {
+        X[i] ^= X[n-1-i];
+        X[n-1-i] ^= X[i];
+        X[i] ^= X[n-1-i];
+    }
+    
+    printf("Массив после разворота:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", X[i]);
+    }
+    printf("\n");
+    
+    return 0;
 }

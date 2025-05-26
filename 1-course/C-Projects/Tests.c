@@ -3,11 +3,12 @@
 #include <stdio.h>
 #include <Windows.h>
 
-#define min(a,b) (a < b) ? a : b
-
 int main(void)
 {
-    SetConsoleOutputCP(CP_UTF8);
-    int a = 10;
-    int 
+    int *arr = (int *)malloc(sizeof(int) * 3);
+    arr[0] = 1;
+    arr[2] = 10;
+    arr[3] = 12;
+    free(arr);
+    printf("%d", arr[0]);
 };
