@@ -51,17 +51,7 @@ TaskNode* remove_task(TaskNode* head, int id){
     }
     return head;
 }
-//функция поиска задачи по ID
-Task* find_task(TaskNode* head, int id){
-    TaskNode* current = head;
-    while(current != NULL){
-        if(current->task->id == id){
-            return current->task;
-        }
-        current = current->next;
-    }
-    return NULL;
-}
+
 //Освобождение всего списка
 void free_task_list(TaskNode* head){
     TaskNode* current = head;
@@ -72,3 +62,18 @@ void free_task_list(TaskNode* head){
         current = next;
     }
 }
+
+TaskNode* delete_all_tasks(TaskNode* head){
+    if(head == NULL){
+        printf("Передан пустой список!");
+        return head;
+    }
+
+    while(head != NULL){
+        TaskNode* to_delete = head;
+        head = head->next;
+        free_task(to_delete->task);
+        free(to_delete);
+    }
+    return head;
+}   

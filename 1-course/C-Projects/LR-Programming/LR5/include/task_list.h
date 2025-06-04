@@ -14,9 +14,9 @@ typedef struct TaskNode
 TaskNode* add_task(TaskNode* head, Task* new_task);
 //функция удаления задачи
 TaskNode* remove_task(TaskNode* head, int id);
-//функция поиска задачи по ID
-Task* find_task(TaskNode* head, int id);
 //Освобождение всего списка
 void free_task_list(TaskNode* head);
+//Удалить все задачи
+TaskNode* delete_all_tasks(TaskNode* head);
 
 #endif // TASK_LIST_H

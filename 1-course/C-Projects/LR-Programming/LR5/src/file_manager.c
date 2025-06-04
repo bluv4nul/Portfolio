@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Windows.h>
 
 // Проверка существования файла
 bool file_exists(const char* filename){
@@ -15,21 +16,12 @@ bool file_exists(const char* filename){
         return true;
     }
 }
-
-// Создание нового пустого файла
-bool create_new_file(const char* filename){
-    FILE *file = fopen(filename, "w");
-    if(file == NULL){
-        printf("ERROR: can`t create file%s\n",filename);
-        return false;
-    }
-    fclose(file);
-    return true;
-}
-
+ 
 // Загрузка задач из файла
 TaskNode* load_tasks_from_file(const char* filename){
-    FILE *file = fopen(filename, "r");
+    char path[256] = "";
+    snprintf(path,sizeof(path),"data/%s",filename);
+    FILE *file = fopen(path, "r");
     if(file == NULL){
         printf("ERROR: can`t open file %s\n", filename);
         return NULL;
@@ -100,18 +92,18 @@ TaskNode* load_tasks_from_file(const char* filename){
 
 // Сохранение списка задач в файл
 bool save_tasks_to_file(const char* filename, TaskNode* head){
-    FILE *file = fopen(filename, "w");
+    char path[256] = "";
+    snprintf(path,sizeof(path),"data/%s",filename);
+    FILE *file = fopen(path, "w");
     if(file == NULL){
         printf("ERROR: can`t open file");
         return false;
     }
-
     TaskNode* current = head;
     while(current != 0){
         Task *task = current->task;
         // Запишем в файл: id, описание, год, месяц, день, час, минута, статус
         // Формат записи: id,description,year,month,day,hour,minute,status\n
-        // Чтобы избежать проблем с запятыми в описании, можно оборачивать строку в кавычки или использовать другой разделитель.
         fprintf(file, "%d,\"%s\",%d,%d,%d,%d,%d,%d\n",
                 task->id,
                 task->description,
@@ -128,11 +120,29 @@ bool save_tasks_to_file(const char* filename, TaskNode* head){
     return true;
 }
 
-// Автосохранение — вызывает сохранение после каждого изменения
-bool autosave(TaskNode* head, const char* autosave_filename) {
-    if (autosave_filename == NULL) {
-        printf("ERROR: autosave filename is NULL\n");
-        return false;
+//Выводит названия всех файлов в папке data
+void list_files_in_data_folder(){
+    WIN32_FIND_DATA findFileData;
+    HANDLE hFind;
+
+    hFind = FindFirstFile("data\\*", &findFileData);
+
+    if (hFind == INVALID_HANDLE_VALUE) {
+        printf("Папка data\\ не найдена или пуста.\n");
+        return;
     }
-    return save_tasks_to_file(autosave_filename, head);
+
+    int found = 0;
+    do {
+        if (!(findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+            printf("%s\n", findFileData.cFileName);
+            found = 1;
+        }
+    } while (FindNextFile(hFind, &findFileData) != 0);
+
+    FindClose(hFind);
+
+    if (!found) {
+        printf("Файлы в папке data\\ не найдены.\n");
+    }
 }

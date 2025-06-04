@@ -7,16 +7,13 @@
 // Проверка существования файла
 bool file_exists(const char* filename);
 
-// Создание нового пустого файла
-bool create_new_file(const char* filename);
-
 // Загрузка задач из файла
 TaskNode* load_tasks_from_file(const char* filename);
 
 // Сохранение списка задач в файл
 bool save_tasks_to_file(const char* filename, TaskNode* head);
 
-// Автосохранение — вызывает сохранение после каждого изменения
-bool autosave(TaskNode* head, const char* autosave_filename);
+//Выводит названия всех файлов в папке
+void list_files_in_data_folder();
 
 #endif // FILE_MANAGER_H
