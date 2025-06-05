@@ -1,4 +1,4 @@
-project('taskmgr', 'c',
+project('taskmgr_meson', 'c',
   default_options: [
     'warning_level=3',     # Аналог -Wall -Wextra
     'c_std=c99',           # Явно указываем стандарт C99

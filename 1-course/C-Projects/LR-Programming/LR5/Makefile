@@ -6,7 +6,7 @@ SRC_DIR = src/
 INCLUDE_DIR = include/
 BIN_DIR = bin/
 
-TARGET = $(BIN_DIR)taskmgr
+TARGET = $(BIN_DIR)taskmgr_make
 
 SRC_FILES = $(wildcard $(SRC_DIR)*.c)
 OBJ_FILES = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC_FILES))
