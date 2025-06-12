@@ -1,65 +1,66 @@
-struct Employee{
+use std::io;
+
+struct ToDoList{
+    task: Vec<Task>,
+    next_id: usize
+}
+
+struct Task{
+    id: u16,
     name: String,
-    position: Position,
-    salary: u32
+    completed: bool
 }
 
-#[derive(PartialEq)]
-enum Position{
-    TeamLead,
-    Designer,
-    Developer
-}
-
-impl Position{
-    fn display_name(&self)->&'static str{
-        match self {
-            Position::Designer => "Дизайнер",
-            Position::Developer => "Инженер-Разработчик",
-            Position::TeamLead => "Тим Лид"
-        }
+impl ToDoList{
+    fn add_task(&self){
+        
     }
 }
 
-impl Employee{
-    fn employee_info(&self){
-        println!("--Информация о работнике--");
-        println!("Имя: {}", self.name);
-        println!("Должность: {}", self.position.display_name());
-        println!("Зарплата: {} руб.", self.salary);
-        println!("\n");
+impl Task {
+    fn change_status(&mut self){
+        self.completed = !self.completed;
+    }
+
+    fn print_task(&self){
+        println!("[№ {}] {} - {}", self.id, self.name, if self.completed {"✅"} else {"❌"});
     }
 }
 
-fn employee_by_position(employees: &[Employee], position: Position) -> Vec<&Employee>{
-    employees.iter().filter(|emp| emp.position == position).collect()
+fn interface(){
+    println!("1. Вывести задачи");
+    println!("2. Добавить задачу");
+    println!("3. Изменить статус задачи");
+    println!("4. Удалить задачу");
+    println!("5. Завершить работу");
+    println!("Введите действие");
 }
+
 fn main(){
-    let employees = vec![
-        Employee {name: "John".to_string(), position: Position::Designer, salary: 250000},
-        Employee {name: "Vasya".to_string(), position: Position::Developer, salary: 300000},
-        Employee {name: "Petrusha".to_string(), position: Position::TeamLead, salary: 500000},
-        Employee {name: "Mattew".to_string(), position: Position::Designer, salary: 250000},
-        Employee {name: "Bob".to_string(), position: Position::Designer, salary: 350000},
-        Employee {name: "Iluha".to_string(), position: Position::Developer, salary: 250000},
-    ];
+    let mut to_do_list = ToDoList {task: Vec::new(), next_id: 1};
+    let mut input: String = String::new();
+    let mut button: u8;
 
-    let designeers = employee_by_position(&employees, Position::Designer);
-    let developers = employee_by_position(&employees, Position::Developer);
-    let team_lead = employee_by_position(&employees, Position::TeamLead);
-
-    println!("Дизайнеры: ");
-    for el in designeers{
-        el.employee_info();
+loop {
+    interface();
+    io::stdin().read_line(&mut input).expect("Ошибка чтения");
+    button = input.parse().expect("Ошибка парсинга");
+    match button {
+        1 => {
+            if to_do_list.next_id == 1{ 
+                println!("Список пуст")
+            }
+            else{
+                for el in to_do_list{
+                }
+            }
+        }
+        2 =>
+        3 =>
+        4 => 
+        5 => break,
+        _ => 
     }
+}
 
-    println!("Инженеры-Разработчики: ");
-    for el in developers{
-        el.employee_info();
-    }
-
-    println!("Тим Лид:");
-    for el in team_lead{
-        el.employee_info();
-    }
 }
