@@ -52,6 +52,7 @@ loop {
             }
             else{
                 for el in to_do_list{
+                    el.task.print_task();
                 }
             }
         }
