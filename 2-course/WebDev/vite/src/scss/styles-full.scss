@@ -1,0 +1,43 @@
+@import "bootstrap/scss/bootstrap";
+
+body {
+  font-family: Arial;
+}
+
+.close-modal,
+.show-time-button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0px 0px 3px rgb(0, 0, 0);
+  transition: all 0.4s;
+}
+
+.show-time-button {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 25px;
+}
+
+.close-modal {
+  padding: 5px 15px;
+}
+
+.close-modal:hover,
+.show-time-button:hover {
+  background-color: white;
+  color: red;
+  box-shadow: 0 0 5px red;
+}
+
+#modalId {
+  .modal-dialog {
+    vertical-align: center;
+  }
+
+  .modal-body {
+    text-align: center;
+  }
+}
