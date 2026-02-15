@@ -30,9 +30,6 @@ def fib_gen():
 
     while True:
         num = yield res
-        if num == 0 or type(num) != int:
-            res == None
-            continue
         res = []
         a = 0
         b = 1
@@ -100,7 +97,7 @@ class SimpleFibonacciIter:
 
     def __init__(self, data):
         self.data = [
-            n for n in data if (n == 0 or is_sqrt(5 * n**2 - 4) or is_sqrt(5 * n**2 + 4) )
+            n for n in data if (is_sqrt(5 * n**2 - 4) or is_sqrt(5 * n**2 + 4))
         ]
 
     def __getitem__(self, idx):
