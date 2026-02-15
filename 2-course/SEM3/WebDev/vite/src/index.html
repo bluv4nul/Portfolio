@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vite + Bootstrap practice</title>
+</head>
+
+<body>
+  
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8 p-3">
+        <button class="show-time-button" data-bs-toggle="modal" data-bs-target="#modalId">
+          Показать время
+        </button>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalId" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Фролов Андрей</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h2 id="time-display"></h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="close-modal" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
