@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valute</title>
+</head>
+<body>
+    <h1>Valute</h1>
+    <label for="rub">Количество рублей:</label>
+    <input type="number" id="rub" name="rub" placeholder="количество рублей"><br>
+    <label for="charCode">Валюта:</label>
+    <input type="text" id="charCode" name="charCode" placeholder="USD, EUR, AUD ..."><br>
+    <button id="bt">Перевести</button>
+    <p>Результат: <span id="res">?</span></p>
+    
+    <script>
+        console.log("Начало обработки");
+
+        (async function() {
+            const response = await fetch("http://w96197nx.beget.tech/lab-valute/valutes.php")
+            window.valutes = await response.json()
+            console.log("Валюты получены", valutes);
+        })();
+
+
+        document.getElementById("bt").addEventListener('click', async () => {
+
+            if (!valutes){
+                document.getElementById("res").textContent = "данные еще загружаются"
+            }
+
+            const rubles = document.getElementById("rub").value
+
+            const charCode = document.getElementById("charCode").value.toUpperCase()
+
+            if(!valutes[charCode]){
+                document.getElementById("res").textContent = "валюта не найдена"
+            } else {
+                document.getElementById("res").textContent = (rubles / Number(valutes[charCode])).toFixed(2)
+            }
+        })    
+    </script>
+</body>
+</html>
